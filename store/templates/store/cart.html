@@ -15,7 +15,7 @@
                 <table class="table">
                     <tr>
                         <th><h5>Items: <strong>{{ order.get_cart_items }}</strong></h5></th>
-                        <th><h5>Total: <strong>Kshs.{{order.get_cart_total | floatformat:2 |intcomma }}</strong></h5></th>
+                        <th><h5>Total: <strong> KSh {{order.get_cart_total |intcomma }}</strong></h5></th>
                         <th>
                             <a style="float: right ;margin: 5px;" class="btn btn-success"  href="{% url 'checkout' %}">Checkout</a>
                         </th>
@@ -38,7 +38,7 @@
                 <div class="cart-row">
                     <div style="flex:2"><img class="row-image" src="{{ item.product.imageURL }}" alt=""></div>
                     <div style="flex:2"><p>{{ item.product.name }}</p></div>
-                    <div style="flex:1"><p>Kshs.{{ item.product.price | floatformat:2 |intcomma }}</p></div>
+                    <div style="flex:1"><p> KSh {{ item.product.price |intcomma }}</p></div>
                     <div style="flex:1">
                         <p class="quantity">{{ item.quantity}}</p>
                         <div class="quantity">
@@ -48,7 +48,7 @@
                         </div>
                         
                     </div>
-                    <div style="flex:1">Kshs.{{item.get_total| floatformat:2 |intcomma}}</div>
+                    <div style="flex:1"> KSh {{item.get_total | intcomma}}</div>
                 </div>
                 {% endfor %}
             </div> 

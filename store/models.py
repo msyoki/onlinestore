@@ -13,13 +13,15 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name=models.CharField(max_length=200, null=True)
-    price=models.FloatField()
+    description=models.TextField(max_length=400, null=True)
+    price=models.IntegerField()
     digital=models.BooleanField(default=False, null=True, blank=False)
     image=models.ImageField( null=True, blank=True)
+    category=models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.name  
-
+ 
 
     @property               #if no image in url render string 
     def imageURL(self):
@@ -56,6 +58,7 @@ class OrderItem(models.Model):
     Order=models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
     quantity=models.IntegerField(default=0, blank=True, null=True) 
     date_added=models.DateField(auto_now_add=True)
+
 
     @property
     def get_total(self):
